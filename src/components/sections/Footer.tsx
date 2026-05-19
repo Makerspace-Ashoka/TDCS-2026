@@ -1,140 +1,74 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone } from 'lucide-react'
+import { Globe, Twitter, Linkedin, Github, MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-
   return (
-    <footer className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-cyan-500/20 overflow-hidden">
-      {/* Background matrix effect */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(90deg, #00ffff 1px, transparent 1px),
-                              linear-gradient(#00ffff 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            opacity: 0.1,
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Program Info */}
+    <footer className="relative w-full border-t border-neon-cyan/30 bg-black/60 backdrop-blur-md pt-16 pb-6 z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+          {/* Column 1: YSP TDCS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-bold text-cyan-400 mb-4 font-mono">
-              YSP TDCS
-            </h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            <h3 className="text-2xl font-display font-bold text-neon-cyan mb-6">YSP TDCS</h3>
+            <p className="text-gray-400 text-sm leading-relaxed mb-8 font-sans pr-4">
               Empowering the next generation of tech innovators through immersive learning in AI, Robotics, and Data Science.
             </p>
-            <div className="flex gap-3">
-              {[
-                { icon: Github, href: '#' },
-                { icon: Linkedin, href: '#' },
-                { icon: Twitter, href: '#' },
-              ].map((social, index) => {
-                const Icon = social.icon
-                return (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:bg-cyan-500/20 transition-all"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </motion.a>
-                )
-              })}
+            <div className="flex gap-4">
+              {[Globe, Twitter, Linkedin, Github].map((Icon, i) => (
+                <a 
+                  key={i} 
+                  href="#" 
+                  className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-neon-cyan hover:text-neon-cyan hover:shadow-glow-cyan transition-all duration-300 group"
+                >
+                  <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                </a>
+              ))}
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Column 2: Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-lg font-bold text-purple-400 mb-4 font-mono">
-              Quick Links
-            </h4>
-            <ul className="space-y-2 text-sm">
-              {[
-                { label: 'Curriculum', href: '#' },
-                { label: 'Resources', href: '#' },
-                { label: 'Instructors', href: '#' },
-                { label: 'Apply Now', href: '#' },
-              ].map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+            <h3 className="text-xl font-display font-bold text-white mb-6">Quick Links</h3>
+            <ul className="space-y-4">
+              <li>
+                <a href="#curriculum-timeline" className="text-gray-400 hover:text-neon-cyan font-sans text-sm transition-colors relative group inline-block">
+                  Curriculum
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan transition-all duration-300 group-hover:w-full" />
+                </a>
+              </li>
+              <li>
+                <a href="#resources" className="text-gray-400 hover:text-neon-cyan font-sans text-sm transition-colors relative group inline-block">
+                  Resources
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan transition-all duration-300 group-hover:w-full" />
+                </a>
+              </li>
+              <li>
+                <a href="#instructors" className="text-gray-400 hover:text-neon-cyan font-sans text-sm transition-colors relative group inline-block">
+                  Instructors
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan transition-all duration-300 group-hover:w-full" />
+                </a>
+              </li>
             </ul>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h4 className="text-lg font-bold text-pink-400 mb-4 font-mono">
-              Contact Us
-            </h4>
-            <div className="space-y-3 text-sm text-gray-400">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-pink-400 flex-shrink-0 mt-0.5" />
-                <span>Ashoka University Campus, Delhi-NCR, India</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-pink-400" />
-                <span>+91 XXX-XXXX-XXXX</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-pink-400" />
-                <span>info@ysptech.org</span>
-              </div>
-            </div>
           </motion.div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-cyan-500/20 my-8" />
-
-        {/* Bottom section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4"
-        >
-          <p className="text-sm text-gray-500">
-            © {currentYear} Young Scholars Programme: Tech, Data & Computer Science. All rights reserved.
+        {/* Bottom Row */}
+        <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-xs font-sans text-center md:text-left">
+            © 2026 Young Scholars Programme: Tech, Data & Computer Science. All rights reserved.
           </p>
-
-          {/* Terminal-like text */}
-          <div className="text-xs font-mono text-cyan-500/50 text-center md:text-right">
-            <div className="inline-block px-3 py-2 bg-slate-900/50 rounded border border-cyan-500/20">
-              <span className="text-neon-green">$</span> {'>>'} Thank you for visiting
-            </div>
+          <div className="font-mono text-sm border border-neon-green/30 bg-neon-green/5 px-4 py-2 rounded text-neon-green shadow-[0_0_10px_rgba(57,255,20,0.1)]">
+            <span className="mr-2">$</span>{'>>'} Thank you for visiting <span className="animate-pulse ml-1 inline-block w-2 h-4 bg-neon-green translate-y-1" />
           </div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Floating orbs */}
-      <div className="absolute top-1/2 -left-32 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
-      <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
     </footer>
   )
 }

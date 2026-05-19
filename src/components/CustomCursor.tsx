@@ -1,27 +1,32 @@
 import { useEffect, useRef } from 'react'
 
 const CustomCursor = () => {
-  const crosshairRef = useRef<HTMLDivElement>(null)
-  const bracketsRef = useRef<HTMLDivElement>(null)
+  const cursorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const crosshair = crosshairRef.current
-    const brackets = bracketsRef.current
-    if (!crosshair || !brackets) return
+    const cursor = cursorRef.current
+    if (!cursor) return
 
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX
       const y = e.clientY
 
-      // Direct DOM manipulation — no React re-render, zero latency
-      crosshair.style.transform = `translate(${x - 10}px, ${y - 10}px)`
-      brackets.style.transform = `translate(${x - 20}px, ${y - 20}px)`
+      // Direct DOM manipulation - zero latency
+      cursor.style.transform = `translate(${x - 16}px, ${y - 16}px)`
 
       const target = e.target as HTMLElement
       const isClickable = target.closest(
-        'a, button, [role="button"], input, select, textarea, .cursor-pointer, .glassmorphism'
+        'a, button, [role="button"], input, select, textarea, .cursor-pointer, .glassmorphism, .group'
       ) !== null
-      brackets.style.opacity = isClickable ? '0.8' : '0'
+      
+      if (isClickable) {
+        cursor.style.transform += ' scale(1.2)'
+        cursor.style.borderColor = '#00f0ff' // turns cyan/blue on hover
+        cursor.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.2)'
+      } else {
+        cursor.style.borderColor = 'transparent'
+        cursor.style.boxShadow = 'none'
+      }
     }
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
@@ -29,36 +34,25 @@ const CustomCursor = () => {
   }, [])
 
   return (
-    <>
-      {/* Main cursor tech crosshair */}
-      <div
-        ref={crosshairRef}
-        className="fixed top-0 left-0 pointer-events-none z-[100] flex items-center justify-center mix-blend-screen w-5 h-5"
-        style={{ willChange: 'transform' }}
-      >
-        {/* Cross lines */}
-        <div className="w-5 h-[2px] bg-cyan-400 absolute shadow-[0_0_8px_rgba(0,255,255,0.8)]" />
-        <div className="w-[2px] h-5 bg-cyan-400 absolute shadow-[0_0_8px_rgba(0,255,255,0.8)]" />
-        {/* Center dot */}
-        <div className="w-1 h-1 bg-white rounded-full absolute shadow-[0_0_10px_rgba(255,255,255,1)]" />
+    <div
+      ref={cursorRef}
+      className="fixed top-0 left-0 pointer-events-none z-[100] w-8 h-8 border-2 flex items-center justify-center transition-opacity duration-200"
+      style={{ 
+        willChange: 'transform',
+        borderColor: 'transparent',
+        transitionProperty: 'opacity, border-color, box-shadow'
+      }}
+    >
+      <div className="relative flex items-center justify-center w-full h-full">
+        {/* Horizontal line */}
+        <div className="absolute w-4 h-[2px] bg-neon-cyan shadow-[0_0_5px_rgba(0,240,255,0.8)]" />
+        {/* Vertical line */}
+        <div className="absolute w-[2px] h-4 bg-neon-cyan shadow-[0_0_5px_rgba(0,240,255,0.8)]" />
       </div>
-
-      {/* Tech brackets around cursor */}
-      <div
-        ref={bracketsRef}
-        className="fixed top-0 left-0 w-10 h-10 pointer-events-none z-[99]"
-        style={{ willChange: 'transform', opacity: 0, transition: 'opacity 0.15s ease' }}
-      >
-        <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-cyan-400" />
-        <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-cyan-400" />
-        <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-cyan-400" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-cyan-400" />
-      </div>
-    </>
+    </div>
   )
 }
 
 CustomCursor.displayName = 'CustomCursor'
 
 export default CustomCursor
-

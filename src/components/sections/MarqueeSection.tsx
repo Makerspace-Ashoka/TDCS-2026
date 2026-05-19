@@ -1,43 +1,40 @@
 import Marquee from 'react-fast-marquee'
-import { motion } from 'framer-motion'
 
 export default function MarqueeSection() {
   const items = [
-    'Robotics',
     'Hardware',
     'Systems Thinking',
     'Electronics',
     'Mechanics',
     'Kinematics',
     'Computer-Aided Design',
-    '3D Printing'
+    '3D Printing',
+    'Robotics'
   ]
 
+  // Duplicate items a few times to ensure the marquee is long enough
+  const displayItems = [...items, ...items, ...items]
+
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="relative w-full py-8 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border-t border-b border-cyan-500/30"
-    >
+    <section className="relative w-full py-4 bg-black/60 border-y border-neon-cyan/20 backdrop-blur-sm z-10">
       <Marquee
-        gradient={true}
-        gradientColor="rgb(15, 23, 42)"
-        speed={50}
+        gradient={false}
+        speed={40}
+        className="overflow-hidden"
       >
         <div className="flex items-center">
-          {items.map((item, i) => (
+          {displayItems.map((item, i) => (
             <div key={i} className="flex items-center">
-              <span className="font-mono text-cyan-400 text-lg whitespace-nowrap neon-text mx-4">
+              <span className="font-mono text-neon-cyan text-sm sm:text-base whitespace-nowrap mx-6 opacity-80 hover:opacity-100 transition-opacity">
                 {item}
               </span>
-              <span className="font-mono text-cyan-400 text-lg whitespace-nowrap neon-text">
+              <span className="font-mono text-neon-cyan/50 text-sm whitespace-nowrap">
                 ///
               </span>
             </div>
           ))}
         </div>
       </Marquee>
-    </motion.section>
+    </section>
   )
 }

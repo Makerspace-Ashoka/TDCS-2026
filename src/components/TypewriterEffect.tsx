@@ -22,7 +22,7 @@ export default function TypewriterEffect({ text, speed = 50 }: TypewriterEffectP
   return (
     <>
       {displayedText}
-      {index < text.length && <span className="animate-pulse">|</span>}
+      <span className="animate-pulse ml-1 font-mono">|</span>
     </>
   )
 }

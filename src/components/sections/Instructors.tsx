@@ -60,7 +60,7 @@ export default function Instructors() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-gray-400 text-lg mb-16 font-sans"
         >
-          Learn from industry experts and passionate educators
+          Learn from passionate educators and makers.
         </motion.p>
 
         {/* Instructors Grid */}
@@ -148,6 +148,18 @@ export default function Instructors() {
                 Contact
               </a>
             </div>
+        </motion.div>
+
+        {/* Office Hours */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-16 bg-cardBg border border-neon-gold/30 rounded-xl p-6 text-center max-w-3xl hover:border-neon-gold hover:shadow-glow-gold transition-all duration-300"
+        >
+          <p className="text-neon-gold font-mono text-sm sm:text-base leading-relaxed">
+            <span className="font-bold">Office Hours:</span> 15-30 minutes between 17:30 - 20:00 p.m. Please sign up for office hours on the respective instructor's Google Calendar.
+          </p>
         </motion.div>
       </div>
     </section>

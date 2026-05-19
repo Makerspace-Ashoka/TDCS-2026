@@ -127,9 +127,14 @@ export default function MakerspaceSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex justify-center"
         >
-          <button className="px-8 py-3 rounded border border-neon-cyan text-neon-cyan font-mono hover:bg-neon-cyan/10 transition-colors hover:shadow-glow-cyan">
+          <a 
+            href="https://www.instagram.com/makerspace_ashoka?igsh=MXdtamowM25hZTg1aw==" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-8 py-3 rounded border border-neon-cyan text-neon-cyan font-mono hover:bg-neon-cyan/10 transition-colors hover:shadow-glow-cyan"
+          >
             Explore Makerspace
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

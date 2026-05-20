@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Globe, Twitter, Linkedin, Github, MapPin, Phone, Mail } from 'lucide-react'
+import { Instagram, Github, MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -17,15 +17,22 @@ export default function Footer() {
               Empowering the next generation of tech innovators through immersive learning in AI, Robotics, and Data Science.
             </p>
             <div className="flex gap-4">
-              {[Globe, Twitter, Linkedin, Github].map((Icon, i) => (
-                <a 
-                  key={i} 
-                  href="#" 
-                  className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-neon-cyan hover:text-neon-cyan hover:shadow-glow-cyan transition-all duration-300 group"
-                >
-                  <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                </a>
-              ))}
+              <a 
+                href="https://www.instagram.com/makerspace_ashoka?igsh=MXdtamowM25hZTg1aw==" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-neon-pink hover:text-neon-pink hover:shadow-glow-pink transition-all duration-300 group"
+              >
+                <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              </a>
+              <a 
+                href="https://github.com/Makerspace-Ashoka/ronnie_robot" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-neon-cyan hover:text-neon-cyan hover:shadow-glow-cyan transition-all duration-300 group"
+              >
+                <Github className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </motion.div>
 

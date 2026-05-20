@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Github, MapPin, Phone, Mail } from 'lucide-react'
+import { Instagram, Github } from 'lucide-react'
 
 export default function Footer() {
   return (

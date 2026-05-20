@@ -1,0 +1,36 @@
+name: Build and deploy to ysp-docker
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64, ysp-docker]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t ysp-tdcs:latest .
+
+      - name: Recreate website container
+        run: |
+          docker rm -f ysp-tdcs-website 2>/dev/null || true
+          docker run -d \
+            --name ysp-tdcs-website \
+            --restart unless-stopped \
+            -p 8080:80 \
+            ysp-tdcs:latest
+
+      - name: Smoke test
+        run: |
+          for i in 1 2 3 4 5; do
+            if curl -fsSI http://localhost:8080 >/dev/null; then
+              echo "OK"
+              exit 0
+            fi
+            sleep 2
+          done
+          docker logs ysp-tdcs-website
+          exit 1

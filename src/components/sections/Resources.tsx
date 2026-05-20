@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Download, Github, FileText, Code2, BookOpen, Cpu, Link as LinkIcon, ChevronDown } from 'lucide-react'
+import { Github, FileText, Code2, BookOpen, Cpu, Link as LinkIcon, ChevronDown } from 'lucide-react'
 
 const resources = [
   {

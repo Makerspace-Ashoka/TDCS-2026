@@ -19,7 +19,7 @@ const resources: any[] = [
     description: 'Comprehensive study guides and references',
     icon: BookOpen,
     links: [
-      { name: 'UAI_bot', url: '/UAI_bot.ipynb' },
+      { name: 'UAI_bot', url: 'https://drive.google.com/file/d/1QzRz8WyZhc1UKotEhGQLPlFU8Nwl7QcO/view?usp=sharing' },
       { name: 'Arduino Docs', url: 'https://docs.arduino.cc' },
       { name: 'ESP-IDF Docs', url: 'https://docs.espressif.com/projects/esp-idf/en/latest/esp32/' },
       { name: 'ROS Docs', url: 'https://docs.ros.org/en/rolling/index.html' },

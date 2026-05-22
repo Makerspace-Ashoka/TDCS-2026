@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Github, FileText, Code2, BookOpen, Cpu, Link as LinkIcon, ChevronDown } from 'lucide-react'
 
-const resources = [
+const resources: any[] = [
   {
     title: 'Curriculum Guide',
     description: 'Complete 8-day curriculum with detailed lesson plans',
@@ -19,6 +19,7 @@ const resources = [
     description: 'Comprehensive study guides and references',
     icon: BookOpen,
     links: [
+      { name: 'UAI_bot', url: '/UAI_bot.ipynb' },
       { name: 'Arduino Docs', url: 'https://docs.arduino.cc' },
       { name: 'ESP-IDF Docs', url: 'https://docs.espressif.com/projects/esp-idf/en/latest/esp32/' },
       { name: 'ROS Docs', url: 'https://docs.ros.org/en/rolling/index.html' },
@@ -43,7 +44,16 @@ const resources = [
       { name: 'Pololu Docs', url: 'https://www.pololu.com/docs' },
       { name: 'C++ Reference', url: 'https://en.cppreference.com/w/' },
       { name: 'PlatformIO Docs', url: 'https://docs.platformio.org/en/latest/' },
-      { name: 'FreeRTOS Docs', url: 'https://www.freertos.org/Documentation/RTOS_book.html' }
+      { name: 'FreeRTOS Docs', url: 'https://www.freertos.org/Documentation/RTOS_book.html' },
+      {
+        group: 'Wokwi Simulations',
+        items: [
+          { name: 'ESPControlledServo', url: 'https://wokwi.com/projects/464661076283804673' },
+          { name: 'ESPControlled2Servo', url: 'https://wokwi.com/projects/464661599286311937' },
+          { name: 'ESPControlledUltrasonic', url: 'https://wokwi.com/projects/464662026465739777' },
+          { name: 'UltrasonicControlledLED', url: 'https://wokwi.com/projects/464704654307222529' }
+        ]
+      }
     ]
   },
   {
@@ -133,11 +143,24 @@ export default function Resources() {
                       defaultValue=""
                     >
                       <option value="" disabled>Select a Link...</option>
-                      {resource.links.map((link, i) => (
-                        <option key={i} value={link.url} className="bg-gray-900 text-white py-2">
-                          {link.name}
-                        </option>
-                      ))}
+                      {resource.links.map((link: any, i: number) => {
+                        if (link.group) {
+                          return (
+                            <optgroup key={i} label={link.group} className="bg-gray-800 text-neon-cyan font-semibold">
+                              {link.items.map((item: any, j: number) => (
+                                <option key={`${i}-${j}`} value={item.url} className="bg-gray-900 text-white py-2 font-normal">
+                                  {item.name}
+                                </option>
+                              ))}
+                            </optgroup>
+                          );
+                        }
+                        return (
+                          <option key={i} value={link.url} className="bg-gray-900 text-white py-2">
+                            {link.name}
+                          </option>
+                        );
+                      })}
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 group-hover/select:text-neon-cyan transition-colors">
                       <ChevronDown className="w-4 h-4" />

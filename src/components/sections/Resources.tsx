@@ -81,6 +81,14 @@ const resources: any[] = [
       { name: 'Wiring Icons', url: 'https://www.flaticon.com/free-icons/wiring-diagram' }
     ]
   },
+  {
+    title: 'Submissions (YAY!)',
+    description: 'Submit your projects and assignments here',
+    icon: FileText,
+    links: [
+      { name: 'Submission Form', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdmas3rMRKQcOl8JD0Ngw61_Ln7eU4_8qEZEoiD-6bRWGS-CQ/viewform?usp=sharing&ouid=103635195387794736999' }
+    ]
+  }
 ]
 
 export default function Resources() {
@@ -99,7 +107,7 @@ export default function Resources() {
         </motion.h2>
 
         {/* Resources Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16 w-full">
           {resources.map((resource, index) => {
             const Icon = resource.icon
             return (

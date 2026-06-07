@@ -49,9 +49,7 @@ const resources: any[] = [
         group: 'Wokwi Simulations',
         items: [
           { name: 'ESPControlledServo', url: 'https://wokwi.com/projects/464661076283804673' },
-          { name: 'ESPControlled2Servo', url: 'https://wokwi.com/projects/464661599286311937' },
-          { name: 'ESPControlledUltrasonic', url: 'https://wokwi.com/projects/464662026465739777' },
-          { name: 'UltrasonicControlledLED', url: 'https://wokwi.com/projects/464704654307222529' }
+          { name: '8-Servo Controller', url: 'https://wokwi.com/projects/466102493416890369' }
         ]
       }
     ]
@@ -94,7 +92,7 @@ const resources: any[] = [
     description: 'Reference documentation and materials',
     icon: FileText,
     links: [
-      { name: 'Day 2 Documentation', url: '/Day_2_documentation.pdf' }
+      { name: 'Documentation', url: '/documentation.pdf' }
     ]
   }
 ]

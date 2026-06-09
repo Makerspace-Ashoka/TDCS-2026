@@ -92,7 +92,7 @@ const resources: any[] = [
     description: 'Reference documentation and materials',
     icon: FileText,
     links: [
-      { name: 'Documentation', url: '/documentation.pdf' }
+      { name: 'TDCS 2026 Session 2 Documentation', url: '/TDCS_2026_Session_2_Documentation.pdf' }
     ]
   }
 ]
